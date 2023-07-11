@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <p class="heading">New poll</p>
+  <div class="form-group">
+    <label class="block">
+      Subject:
+      <input type="text" [(ngModel)]="subject" />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="block">
+      Description:
+      <input type="text" [(ngModel)]="description" />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="block">
+      Proposals (separated by commas):
+      <input type="text" [(ngModel)]="proposals" />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="block">
+      Duration:
+      <input type="number" min="0" class="with-select" [(ngModel)]="duration" />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="block">
+      Time unit:
+      <select [(ngModel)]="timeUnit">
+        <option value="seconds">Seconds</option>
+        <option value="minutes">Minutes</option>
+        <option value="hours">Hours</option>
+        <option value="days">Days</option>
+        <option value="weeks">Weeks</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <input type="checkbox" [(ngModel)]="isPrivate" />
+      Private poll
+    </label>
+  </div>
+
+  <button mat-button (click)="createNewPoll()" [disabled]="isLoading">
+    Create new poll
+  </button>
+
+  <div class="form-group" *ngIf="error">
+    <p class="error">{{ errorMessage }}</p>
+  </div>
+</div>

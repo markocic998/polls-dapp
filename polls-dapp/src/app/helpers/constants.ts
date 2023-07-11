@@ -1,0 +1,2 @@
+export const addressZero = '0x0000000000000000000000000000000000000000';
+export const GAS = 3000000;

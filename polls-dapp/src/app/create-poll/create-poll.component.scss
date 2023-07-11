@@ -1,0 +1,56 @@
+.wrapper {
+  max-width: 50%;
+  margin: auto;
+  position: relative;
+  top: 10%;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 1%;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.block {
+  display: block;
+}
+
+input:not([type="checkbox"]) {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  width: 102%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover:not([disabled]) {
+    background-color: #45a049;
+  }
+
+  &:disabled {
+    cursor: wait;
+  }
+}
+
+.error {
+  padding-top: 1%;
+  color: red;
+}

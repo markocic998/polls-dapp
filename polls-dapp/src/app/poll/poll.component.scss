@@ -1,0 +1,52 @@
+.wrapper {
+  max-width: 500px;
+  margin: auto;
+  position: relative;
+  top: 5%;
+}
+
+.load-poll--wrapper {
+  max-width: 500px;
+  margin: auto;
+  position: relative;
+  top: 1%;
+  left: 1%;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.block {
+  display: block;
+}
+
+input:not([type="radio"]) {
+  width: 70%;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover:not([disabled]) {
+    background-color: #45a049;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.mat-progress-spinner {
+  margin: auto;
+  top: 40%;
+}

@@ -1,0 +1,34 @@
+<div *ngIf="isActive; else nonActive">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Poll address</mat-card-title>
+      <mat-card-subtitle>{{ address }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['../poll', address]">
+        MORE INFORMATION
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #nonActive>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Poll address</mat-card-title>
+      <mat-card-subtitle>{{ address }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="../../assets/results.png" alt="Poll" />
+    <mat-card-content>
+      <p>Results:</p>
+      <p *ngFor="let proposal of results">
+        {{ proposal.name }}: {{ proposal.voteCount }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['../poll', address]">
+        MORE INFORMATION
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

@@ -1,0 +1,21 @@
+p {
+  margin: 1%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.polls--container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1%;
+}
+
+.card--wrapper {
+  max-width: 400px;
+  margin: 1%;
+}
+
+.mat-progress-spinner {
+  margin: auto;
+  top: 40%;
+}

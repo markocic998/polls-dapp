@@ -1,0 +1,112 @@
+<div class="load-poll--wrapper">
+  <div class="form-group">
+    <label class="block"> Poll address for loading: </label>
+    <input type="text" [(ngModel)]="addressForLoading" /><button
+      mat-button
+      (click)="loadPoll()"
+    >
+      Load
+    </button>
+  </div>
+</div>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="wrapper" *ngIf="!isLoading && address != undefined">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{ subject }}</mat-card-title>
+      <mat-card-subtitle>Poll address: {{ address }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-group">
+        <label class="block"> Description: {{ description }} </label>
+      </div>
+      <div class="form-group">
+        <label class="block"> Creator: {{ creator }} </label>
+      </div>
+      <div class="form-group">
+        <label class="block"> Average rating: {{ rating }} </label>
+      </div>
+      <div class="form-group">
+        <label class="block">
+          Deadline: {{ deadline | date : "medium" }}
+        </label>
+      </div>
+      <br />
+
+      <div *ngIf="isDeadlineExpired; else activePoll">
+        <p style="color: red">Non-active</p>
+        <br />
+        <div class="form-group">
+          <p>Results:</p>
+          <p *ngFor="let proposal of proposals">
+            {{ proposal.name }}: {{ proposal.voteCount }}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="block"> Winner proposal: {{ winner }} </label>
+        </div>
+        <div class="form-group">
+          <label class="block"> Rate: </label>
+          <input type="number" min="1" max="5" [(ngModel)]="rate" /><button
+            mat-button
+            [disabled]="shouldDisableRateButton()"
+            (click)="rateCreator()"
+          >
+            Rate
+          </button>
+        </div>
+      </div>
+      <ng-template #activePoll>
+        <p style="color: #6ec531">Active</p>
+        <br />
+
+        <div *ngIf="!isPrivatePoll" class="form-group">
+          <label class="block"> Delegate to address: </label>
+          <input type="text" [(ngModel)]="delegatedTo" /><button
+            mat-button
+            [title]="delegateTooltip"
+            [disabled]="shouldDisableDelegateButton()"
+            (click)="delegate()"
+          >
+            Delegate
+          </button>
+        </div>
+
+        <div *ngIf="isPrivatePoll" class="form-group">
+          <label class="block"> Give rights to address to vote: </label>
+          <input type="text" [(ngModel)]="grantTo" /><button
+            mat-button
+            [title]="grantTooltip"
+            [disabled]="shouldDisableGrantButton()"
+            (click)="giveRightToVote()"
+          >
+            Grant
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label class="block"> Proposals: </label>
+          <label *ngFor="let proposal of proposals; let i = index">
+            <input
+              id="{{ proposal.name }}"
+              [value]="i"
+              type="radio"
+              name="proposals"
+              [(ngModel)]="myVote"
+            />
+            {{ proposal.name }}
+          </label>
+          <button
+            mat-button
+            [title]="voteTooltip"
+            [disabled]="shouldDisableVoteButton()"
+            (click)="vote()"
+          >
+            Vote
+          </button>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>

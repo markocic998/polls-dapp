@@ -1,0 +1,16 @@
+<mat-spinner *ngIf="isLoading; else loaded"></mat-spinner>
+<ng-template #loaded>
+  <p style="color: #6EC531;">Active Polls</p>
+  <div class="polls--container">
+    <div class="card--wrapper" *ngFor="let addr of activePolls">
+      <app-card [address]="addr" [isActive]="true"></app-card>
+    </div>
+  </div>
+  <br />
+  <p style="color: red;">Non-active Poll Results</p>
+  <div class="polls--container">
+    <div class="card--wrapper" *ngFor="let item of nonActivePollResults">
+      <app-card [address]="item.poll" [results]="item.proposals"></app-card>
+    </div>
+  </div>
+</ng-template>
